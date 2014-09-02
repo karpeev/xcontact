@@ -1,0 +1,42 @@
+#include "DevApp.h"
+#include "Moose.h"
+#include "AppFactory.h"
+
+template<>
+InputParameters validParams<DevApp>()
+{
+  InputParameters params = validParams<MooseApp>();
+  return params;
+}
+
+DevApp::DevApp(const std::string & name, InputParameters parameters) :
+    MooseApp(name, parameters)
+{
+  srand(processor_id());
+
+  Moose::registerObjects(_factory);
+  DevApp::registerObjects(_factory);
+
+  Moose::associateSyntax(_syntax, _action_factory);
+  DevApp::associateSyntax(_syntax, _action_factory);
+}
+
+DevApp::~DevApp()
+{
+}
+
+void
+DevApp::registerApps()
+{
+  registerApp(DevApp);
+}
+
+void
+DevApp::registerObjects(Factory & factory)
+{
+}
+
+void
+DevApp::associateSyntax(Syntax & syntax, ActionFactory & action_factory)
+{
+}
