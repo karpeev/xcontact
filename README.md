@@ -1,6 +1,2 @@
-Dev
-=====
-
-"Fork Dev" to create a new MOOSE-based application.
-
-For more information see: [http://mooseframework.com/create-an-app/](http://mooseframework.com/create-an-app/)
+XContact is "eXperimental Contact".
+It is a collection of kernels and tests for experimentation with different solver techniques for elastic contact problems.
