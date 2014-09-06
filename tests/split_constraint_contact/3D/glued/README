@@ -1,0 +1,193 @@
+Tables below should be viewed in a VERY WIDE WINDOW.
+
+Here we examine the convergence of various preconditioners for basic contact problems using (1) different formulations of elasticity and (2) different enforcement of the contact constraints.
+The basic contact problems are B (for "blocks") in 3D Cartesian coordinates.
+
+1) In 3D elasticity is implemented either using TensorMechanics (TM), or SolidMechanics (SM).
+SM can use different material models: "EL" for "elastic" (linear material), "PLC" for "power-law creep".
+TM and SM-EL should be identical (for suitable elastic coefficients). TM should generate the exact Jacobian, and so should SM-EL.
+
+2) Contact constraints are generally implemented using the MechanicalContactConstraint (MCC) with different contact models.
+'glued' is the most basic and MCC_glued intended to implement the same model as the earlier GluedContactConstraint (GCC).
+GCC generates the correct Jacobian for the constrained system.  MCC is supposed to as well (is that right?).
+GCC (as the name suggests) can only handle glued contact.  For frictionless contact we have tried using MCC_frictionless,
+but are now sidetracked investigating the correctness of this formulation.
+
+
+===================================================================================================
+3D.
+B3 is the mesh of two blocks with 3 levels of refinment.
+The left block is rotated 45 degrees with respect to the right block and clipped by the right block.
+The blocks are discretized using a tetrahedral mesh and the meshes of the two blocks to NOT conform,
+for a more rigorous test of the contact formulation.  See B3_tet.jou (Cubit journal file) and the
+resulting B3_tet.e (Exodus II) for a better idea of what the geometry looks like.
+The total number of degrees of freedom is 40230.
+
+glued
+We are investigating (i) the performance of different preconditioners for GCC and MCC_glued for TM and SM implementations
+of linear elasticity.  This performance is well understood for TM_GCC, but seems to present surprises when using SM or MCC_glued.
+This leads us to investigate (ii) the correctness of the residual/Jacobian produced by SM and/or MCC_glued.
+
+Solvers:
+
+When using splits, the slave degrees of freedom that are in contact are eliminated and the resulting reduced system S (the Schur complement)
+is assembled exactly.  Then either an Additive Schwartz (ASM) or a Hypre BoomerAMG (Hypre) preconditioner is used on S.  This is a bit
+of a heaviweight treatment, but should be robust.  Alternatively, ASM or Hypre can be used on the whole system, where the slave dofs carry
+the constraint equations.
+
+We expect Hypre to perform poorly on the unsplitformulation, and it does.  The split formulation improves it, but not enough to make Hypre
+competitive with AMS (whether split or unsplit).  We see that ASM performs surprisingly well even in the unsplit case, but the number of iterations
+grows with mesh refinement.  To address this latter issue we plan to investigate the use of an AMG method other than Hypre -- know that GAMG
+can be made to deliver essentially mesh-independent convergence for elasticity without contact, while Hypre or ASM can [need to include the input
+files for that study].  Using GAMG with splits ought to result in a robust (thanks to splits) and mesh-independent (thanks to multigrid) convergence.
+
+Tolerances:
+Note that for the split formulation the linear solver is nested, and we report the total number of iterations on the
+eliminated system S, which accounts for the majority of the linear solver work.
+We used absolute nonlinear tolerance of 1e-8, a maximum of 20 nonlinear iterations, and a relative linear tolerance of 1e-8.
+
+
+Notation:
+In the tables below we report the nonlinear iteration number and next to it, in square brackets, the number of slave dofs in contact during that iteration,
+whenever it is available (the number of slave dofs in contact is easily reportable only by split solvers, so it is only used for those tests).
+Below we report  the number of linear iterations taken to convergence during this nonlinear iteration, and, when using the split method, the (rounded) average
+number of inner linear iteration per linear iteration. Finally, below that we report the (norm of the) residual at the end of the nonlinear iteration. Thus,
+        1[231]  2[243]  3[243]
+         4(14)   3(14)   3(13)
+1.5e-3    1.89    1.99    1.38
+indicates that the initial nonlinear residual was 1.5e-3 followed by 3 nonlinear iterations. During the first nonlinear iteration there were 231 slave
+dofs in contact; the linear solve took 4 linear iterations resulting in the nonlinear residual with norm 1.89; the linear solver was nested, using splits
+to define the interior solve, and this linear solve took an average of 14 inner iterations per linear iteration.  The second nonlinear iteration had 243
+slave dofs in contact, the (nested, split-based) linear solve took 3 (outer) iterations with 14 inner iterations on average, making the nonlinear residual norm 1.99.
+The third nonlinear iteration had 243 slave dofs in contact (same as the second iteration), the linear solve took 3 linear iterations with an average of 13 inner
+iterations, bringing the nonlinear residual norm down to 1.38.
+Sometimes, when the nonlinear convergence history is long and the number slave dofs in contact as well as the number of linear iterations is the same,
+we use this notation:
+  4-13[245]
+[10x] 3(14)
+1.33e-5
+means 10 nonlinear iterations -- 4 through 13 -- each had 245 slave dofs in contact and each linear solve took 3 (outer) linear iterations (each with an average of 14 linear iterations);
+at the end of nonlinear iteration 13 the norm of the nonlinear residual was equal to 1.33e-5.
+
+
+                                                                                                            Table 1
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+elasticity/constraint:                                                                        TM_GCC (8 processor run, ASM: overlap 5, LU on the blocks; dofs: 40230)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                               1       2       3        4-13         14        15       16       17-19
+NEWTON_ASM                    26      20      18    [10x] 19         18        19       19     [3x] 18
+                   1.5e-3   1.89    1.99    1.38     5.01e-6    1.62e-6   5.27e-6  1.72e-7     9.47e-9
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                           1[231]   2[243]    3[243]    4-13[243]    14[243]   15[243]  16[243]  17-19[243]
+NEWTON_SPLIT_ASM            4(14)    3(14)     3(13)  [10x] 3(14)      3(14)     3(14)    4(14)  [3x] 3(14)
+                   1.5e-3    1.89     1.99      1.38      5.01e-6    1.62e-6   5.26e-6  1.72e-7     8.13e-9
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NEWTON_HYPRE                                         diverged
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                           1[231]    2[243]   3[243]    4[243]    5[243]   6[243]   7[243]   8[243]   9[243]  10[243]  11[243]  12[243]  13[243]  14[243]  15[243]  16[243]  17[243]  18[243]  19[243]  20[243]
+NEWTON_SPLIT_HYPRE          4(53)     3(51)    3(51)     3(60)     3(52)    3(50)    3(53)    3(59)    3(56)    3(57)    3(50)    3(58)    3(57)    3(57)    3(56)    3(63)    3(54)    3(58)    3(58)    3(56)
+                   1.5e-3    2.78   1.75e+1     1.22   2.55e-1   6.35e-2  1.69e-2  5.03e-3  1.51e-3  4.89e-4  1.58e-4  5.25e-5  1.78e-5  6.02e-6  2.10e-6  7.22e-7  2.61e-7  8.98e-8  3.39e-8  1.32e-8  7.88e-9
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                           1         2        3
+PJFNK_ASM          1.5e-3  28        20       19
+                           7.29e-4   7.4e-8   6.02e-9
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                           1[231]    2[243]   3[243]
+PJFNK_SPLIT_ASM    1.5e-3  18(14)    12(14)   13(14)
+                           1.95e-3   2.8e-5   6.09e-9
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+These results indicate a problem with the Jacobian.
+Consider NEWTON_ASM with LU on the blocks.  This is a very strong preconditioner that is expected to exhibit fast linear convergence and nonlinear convergence in close to 1 iteration (see Table 2 below); instead,
+the solve here requires 19 nonlinear iterations.  The addtion of splits doesn't change the nonlinear convergence appreciably.  Furthermore, the linear convergence is in line with what can be expected from the Split-based
+preconditioner (about 14 inner iterations).  Hypre exhibits essentially the same behavior: without Splits Hypre cannot converge the linear system, but with the Splits the linear system converges nicely, essentially the same
+way as it does with (SPLIT_)ASM as is expected and as seen with earlier versions of GCC.  Thus, the problem is not with the linear solver or the Splits. The conclusion is that the linear solve does not reduce the nonlinear
+residual sufficiently, convergence is not quadratic (see the tail of the residual history), and, therefore, the Jacobian is likely incorrect.
+
+Further evidence that the linear system is incompatible with the nonlinear residual is in PJFNK_(SPLIT_)ASM runs. Here we see that the nonlinear convergence improves dramatically compared to NEWTON, which indicates that the PJFNK
+Jacobian is markedly better than the NEWTON Jacobian.  At the same time, the linear convergence deteriorates, particularly for the PJFNK_SPLIT_ASM case.  It is not clear why PJFNK_ASM does not suffer a similar decline in linear
+convergence -- the Split and nonsplit ASM preconditioners are supposed to be essentially equivalent (up to round-off).   In any event, we can suspect that the preconditioner system doesn't match the PJFNK linear system well enough,
+so that the application of the preconditioner does not improve the linear operator enough.
+
+Since earlier versions of the same constraint (GCC) when used with TM produced much better convergence, we suspect A REGRESSION IN THE GCC FORMULATION.
+To this end consider Table 2.  It reports the manually-recorded results from a version of MOOSE from about March 2014.  It is not easy to resurrect that
+version of the code despite the use of version control: those results were obtained with a development version of PETSc; to work with it the stock libMesh
+distributed with MOOSE (e.g., as a git submodule) must be replaced with a compatible development version of libMesh.  This isn't necessarily prohibitively
+difficult, but I feel the payoff will not be very high, as we have a pretty good idea that GCC is now broken.
+
+                                                                                                            Table 2.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+elasticity/constraint:                                                                  TM_GCC (March 2014, 8 processor run (?), ASM: overlap 5; dofs: 40230)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                               1
+NEWTON_ASM                    38
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                           1[234]   2[243]    3[243]
+NEWTON_SPLIT_ASM            4(14)    4(12)     3(13)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NEWTON_HYPRE                                         diverged
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                           1[234]    2[243]   3[243]    4[243]
+NEWTON_SPLIT_HYPRE          4(28)     3(29)    3(26)     3(28)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Note that here the nonlinear convergence was what one would expect when using an exact Jacobian.
+Thus, a regression in the GCC Jacobian is suspected.
+
+
+The assumption above is that TM_GCC does not generate an exact Jacobian.  The assumption is that GCC is at fault.
+The systematic course of action is to investigate the minimal viable problem using -snes_check_jacobian.
+We plan to do so in the nearest future.  In the meantime we can perform a less systematic test by comparing TM_GCC
+to TM_MCC_glued, which is done in Table 3 below.
+
+                                                                                                                Table 3.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+elasticity/constraint:                                                                  TM_MCC_glued (8 processor run, ASM: overlap 5; dofs: 40230)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                     1        2        3         4         5         6-20
+NEWTON_ASM                          26       20       20        20        19     [15x] 20
+                     1.50e-3   2.62e+1  1.59e+1  1.06e+2   1.14e+2   8.65e+1      1.11e+2
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                1[231]   2[243]    3[243]   4[243]         5         6-20
+NEWTON_SPLIT_ASM                 4(15)    3(14)     3(15)    3(15)     3(15)  [15x] 3(15)
+                     1.50e-3   2.62e+1  7.82e+1  1.06e+2   1.14e+2   8.65e+1      1.11e+2  (divergence)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PJFNK_ASM            linear (and, therefore, nonlinear) divergence
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PJFNK_SPLIT_ASM      linear (and, therefore, nonlinear) divergence; notably, the inner linear solve converges nicely.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Here we have evidence that both the assembled Jacobian does not correspond to the nonlinear residual (NEWTON cases), since despite the convergence of the linear system, the nonlinear residual grows -- the linear correction does not
+result in a descent direction. Furthermore, the solve of the assembled Jacobian linear system results in an exteremely bad preconditioner of the PJFNK linear system -- a complete linear divergence in the PJFNK cases.  The convergence
+of the inner solve is not surprising, since it only says that the Splits do its job in solving the assembled Jacobian system. Based on these results we conclude that MCC_glued produces an even more incorrect Jacobian (so to speak)
+than GCC.
+
+Is this behavior somehow a result of an  incompatibility of constraints with TM? Constraints and physics kernels are supposed to be "orthogonal", but we want to briefly investigate the possibility of such a "crosstalk" in Tables 4&5
+below where we combine the SolidMechanics (SM) formulation of linear elasticity (presumably, equivalent to TM and generating an exact Jacobian) with GCC (Table 4), and TensorMechanics (TM) with MCC_glued (Table 5).
+
+
+                                                                                                                 Table 4.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+elasticity/constraint:                                                                  SM_GCC (8 processor run, ASM: overlap 5; dofs: 40230)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                     1        2        3         4-10           11         12     13-15        16        17       18       19
+NEWTON_ASM                          27       21       19           20           19         20        19        18        17       18       18
+                     1.50e-3   1.44e+0  2.69e+1  1.17e+0      1.41e-4      4.59e-5    1.47e-5   5.19e-7   1.72e-7   5.73e-8  2.00e-8  8.19e-9
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Here we find convergence history very similar to TM_GCC.  This indicates that the elasticity formulations are likely equivalent and, presumably, correct, while GCC suffered a regression from the March 2014 version.
+Observe the subquadratic nonlinear convergence indicative of the incorrect assembled Jacobian.  Finally, the temporary increase in the nonlinear residual early on is likely due to more slave nodes coming into contact,
+analogous to the TM_GCC behavior when solved with a split method (see Table 1).
+
+                                                                                                                 Table 5.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+elasticity/constraint:                                                                  SM_MCC_glued (8 processor run, ASM: overlap 5; dofs: 40230)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                     1        2        3         4         5        6-9       10       11       12    13-19        20
+NEWTON_ASM                          27       22       21        20        19    [4x] 21       22       21       20  [7x] 21        20
+                     1.50e-3   2.30e+1  7.24e+1  8.41e+1   9.11e+1   7.56e+1    2.64e+1  5.08e+1  8.09e+1  9.01e+1  8.47e+1   9.46e+1  (divergence)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Here we find convergence history very similar to TM_MCC_glued with a nonlinear divergence.  This indicates, again, that the problem is not with the elasticity formulation (TM or SM), but with MCC_glued, and that it
+likely assembles an incorrect Jacobian.
+
+
+===================================================================================================

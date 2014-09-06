@@ -3,7 +3,7 @@
 ###############################################################################
 #
 # Optional Environment variables
-# MOOSE_DIR        - Root directory of the MOOSE project 
+# MOOSE_DIR        - Root directory of the MOOSE project
 # HERD_TRUNK_DIR   - Location of the HERD repository (or parent directory)
 # FRAMEWORK_DIR    - Location of the MOOSE framework
 #
@@ -25,7 +25,7 @@ include $(MOOSE_DIR)/modules/modules.mk
 
 # dep apps
 APPLICATION_DIR    := $(CURRENT_DIR)
-APPLICATION_NAME   := dev
+APPLICATION_NAME   := contact
 BUILD_EXEC         := yes
 DEP_APPS           := $(shell $(FRAMEWORK_DIR)/scripts/find_dep_apps.py $(APPLICATION_NAME))
 include            $(FRAMEWORK_DIR)/app.mk

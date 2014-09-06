@@ -1,0 +1,10 @@
+Examples below this directory test the handling of contact between two blocks,
+hence the 'B' in Bx_tet.jou and Bx_tet.e and Bx_XXX.i below.
+The block meshes are generated using the *.jou files here with Cubit,
+but the meshes need to go into the directories specific to the tests: glued, etc.
+The easiest way to do it is to run Cubit in the batch mode from subdirectories:
+>cd glued
+>cubit -batch -nographics ../B3_tet.jou
+
+The interpretation of the results of the tests in the specific directories is
+in the README files in those directories.

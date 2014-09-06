@@ -1,0 +1,30 @@
+brick x 10 y 10 z 3
+brick x 10 y 10 z 3
+move volume 1 location 10 0 0 include_merged
+rotate volume 2 angle 45 about z include_merged
+subtract volume 1 from volume 2 keep
+delete volume 2
+volume 1 3 size auto factor 10
+volume 1 3 size auto factor 10 preview
+preview mesh volume 1 3
+preview mesh volume 1 3
+preview mesh volume 1 3
+preview mesh volume 1 3 reset
+volume 1 3 scheme tetmesh
+set tetmesher interior points on
+set tetmesher optimize level 3 optimize overconstrained off sliver off
+set tetmesher boundary recovery off
+mesh volume 1
+mesh volume 3
+block 1 volume 3
+block 2 volume 1
+sideset 8 surface 1 2
+sideset 5 surface 4
+sideset 7 surface 3 5
+sideset 6 surface 6
+sideset 1 surface 13
+sideset 3 surface 14 17
+sideset 4 surface 15 16
+sideset 2 surface 18 19
+refine volume 1 3 numsplit 2 bias 1 depth 1 smooth
+export mesh 'B2_tet.e'

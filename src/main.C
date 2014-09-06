@@ -1,4 +1,4 @@
-#include "DevApp.h"
+#include "SplitContactApp.h"
 #include "MooseInit.h"
 #include "Moose.h"
 #include "MooseApp.h"
@@ -14,10 +14,10 @@ int main(int argc, char *argv[])
   MooseInit init(argc, argv);
 
   // Register this application's MooseApp and any it depends on
-  DevApp::registerApps();
+  SplitContactApp::registerApps();
 
   // This creates dynamic memory that we're responsible for deleting
-  MooseApp * app = AppFactory::createApp("DevApp", argc, argv);
+  MooseApp * app = AppFactory::createApp("SplitContactApp", argc, argv);
 
   app->legacyUoInitializationDefault() = false;
   app->legacyUoAuxComputationDefault() = false;
