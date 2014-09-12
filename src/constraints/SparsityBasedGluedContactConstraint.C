@@ -237,7 +237,7 @@ SparsityBasedGluedContactConstraint::computeJacobian()
   PetscErrorCode ierr;
   PetscInt ncols;
   const PetscInt *cols;
-  ierr = MatGetRow(jac,_var.nodalDofIndex(),&ncols,&cols,PETSC_NULL);CHKERRABORT(libMesh::COMM_WORLD, ierr);
+  ierr = MatGetRow(jac,_var.nodalDofIndex(),&ncols,&cols,PETSC_NULL);CHKERRABORT(PetscObjectComm((PetscObject)jac), ierr);
   bool debug = false;
   if(debug) {
     libMesh::out << "_connected_dof_indices: adding " << ncols << " dofs from Jacobian row[" << _var.nodalDofIndex() << "] = [";
@@ -251,7 +251,7 @@ SparsityBasedGluedContactConstraint::computeJacobian()
   if (debug) {
     libMesh::out << "]\n";
   }
-  ierr = MatRestoreRow(jac,_var.nodalDofIndex(),&ncols,&cols,PETSC_NULL);CHKERRABORT(libMesh::COMM_WORLD, ierr);
+  ierr = MatRestoreRow(jac,_var.nodalDofIndex(),&ncols,&cols,PETSC_NULL);CHKERRABORT(PetscObjectComm((PetscObject)jac), ierr);
 #else
 
   std::vector<unsigned int> & elems = _node_to_elem_map[_current_node->id()];
