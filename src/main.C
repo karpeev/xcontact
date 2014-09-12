@@ -4,6 +4,7 @@
 #include "MooseApp.h"
 #include "AppFactory.h"
 
+
 // Create a performance log
 PerfLog Moose::perf_log("XContact");
 

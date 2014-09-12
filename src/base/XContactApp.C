@@ -3,7 +3,7 @@
 #include "Moose.h"
 #include "AppFactory.h"
 
-#include "GluedContactConstraint.h"
+#include "SparsityBasedGluedContactConstraint.h"
 
 template<>
 InputParameters validParams<XContactApp>()
@@ -39,6 +39,7 @@ XContactApp::registerApps()
 void
 XContactApp::registerObjects(Factory & factory)
 {
+  registerConstraint(SparsityBasedGluedContactConstraint);
 }
 
 void
