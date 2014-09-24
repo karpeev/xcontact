@@ -127,7 +127,7 @@
   solve_type = 'NEWTON'
 
 
-
+  petsc_options = '-snes_view -snes_check_jacobian'
   petsc_options_iname = '-pc_type'
   petsc_options_value = '      lu'
   dt = 0.005
