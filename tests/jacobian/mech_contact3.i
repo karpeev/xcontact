@@ -55,19 +55,6 @@
   [../]
 []
 
-#[Contact]
-#  [./mechanical]
-#    master = 1
-#    slave = 7
-#    disp_x = disp_x
-#    disp_y = disp_y
-#    penalty = 1e7
-#    tangential_tolerance = 0.1
-#    model = glued
-#  #  system = constraint
-#  [../]
-#[]
-
 [Constraints]
   [./contact_x]
     type = MechanicalContactConstraint
@@ -100,33 +87,31 @@
 []
 
 [BCs]
-  [./leftright_disp_x]
+  [./left_anchor_disp_x]
     type = DirichletBC
     variable = disp_x
-    boundary = '4 2'
+    boundary = '3'
     value = 0
   [../]
-  [./bottom_disp_y]
+  [./left_anchor_disp_y]
+    type = DirichletBC
+    variable = disp_y
+    boundary = '3'
+    value = 0
+  [../]
+  [./right_squeeze_disp_x]
+    type = DirichletBC
+    variable = disp_x
+    boundary = 3
+    value = -0.001
+  [../]
+  [./right_squeeze_disp_y]
     type = DirichletBC
     variable = disp_y
     boundary = 3
-    value = 0
-  [../]
-
-  [./disp_y_upper]
-    type = FunctionDirichletBC
-    variable = disp_y
-    boundary = '5'
-    function = source
-  [../]
-  [./disp_x_upper]
-    type = DirichletBC
-    variable = disp_x
-    boundary = '5 6 8'
-    value = 0
+    value = 0.0
   [../]
 []
-
 
 [Preconditioning]
   [./full]
@@ -137,15 +122,15 @@
 
 
 [Executioner]
-  type = Transient
+  type = Steady
 
   #Preconditioned JFNK (default)
   solve_type = 'NEWTON'
 
 
 
-  petsc_options_iname = '-pc_type -pc_hypre_type'
-  petsc_options_value = 'hypre boomeramg'
+  petsc_options_iname = '-pc_type'
+  petsc_options_value = '      lu'
   dt = 0.005
   dtmin = 0.001
   #num_steps = 20
