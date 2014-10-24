@@ -1,0 +1,337 @@
+[33m*** Warning, This code is deprecated, and likely to be removed in future library versions!
+Please use a space to separate options in a MooseEnum, commas are deprecated
+MooseEnum initialized with names: "CONSTANT, FIRST, SECOND, THIRD, FOURTH"
+/Users/karpeev/moose/rev/framework/src/utils/MooseEnumBase.C, line 33, compiled Sep 15 2014 at 18:24:03 ***[39m
+File opened successfully.
+Exodus header info retrieved successfully.
+Title: 	cubit(/Users/novasr/check_Jacobian_terms/contact/contact.e): 09/11/2014: 15:25:4
+Mesh Dimension: 	2
+Number of Nodes: 	8
+Number of elements: 	2
+Number of elt blocks: 	2
+Number of node sets: 	0
+Number of side sets: 	8
+Nodal data retrieved successfully.
+Nodal numbering map retrieved successfully.
+[0] node_num_map[i] = 1, 2, 3, 4, 5, 6, 7, ... 8
+All block IDs retrieved successfully.
+All block names retrieved successfully.
+Element numbering map retrieved successfully.
+[0] elem_num_map[i] = 1, ... 2
+Reading a block of 1 QUAD4(s) having 4 nodes per element.
+Info retrieved successfully for block: 0.
+Connectivity retrieved successfully for block: 0.
+Reading a block of 1 QUAD4(s) having 4 nodes per element.
+Info retrieved successfully for block: 1.
+Connectivity retrieved successfully for block: 1.
+All sideset information retrieved successfully.
+All side set names retrieved successfully.
+Parameters retrieved successfully for sideset: 0.
+Data retrieved successfully for sideset: 0.
+Parameters retrieved successfully for sideset: 1.
+Data retrieved successfully for sideset: 1.
+Parameters retrieved successfully for sideset: 2.
+Data retrieved successfully for sideset: 2.
+Parameters retrieved successfully for sideset: 3.
+Data retrieved successfully for sideset: 3.
+Parameters retrieved successfully for sideset: 4.
+Data retrieved successfully for sideset: 4.
+Parameters retrieved successfully for sideset: 5.
+Data retrieved successfully for sideset: 5.
+Parameters retrieved successfully for sideset: 6.
+Data retrieved successfully for sideset: 6.
+Parameters retrieved successfully for sideset: 7.
+Data retrieved successfully for sideset: 7.
+All node set names retrieved successfully.
+Exodus file closed successfully.
+File opened successfully.
+Exodus header info retrieved successfully.
+Title: 	cubit(/Users/novasr/check_Jacobian_terms/contact/contact.e): 09/11/2014: 15:25:4
+Mesh Dimension: 	2
+Number of Nodes: 	8
+Number of elements: 	2
+Number of elt blocks: 	2
+Number of node sets: 	0
+Number of side sets: 	8
+Nodal data retrieved successfully.
+Nodal numbering map retrieved successfully.
+[0] node_num_map[i] = 1, 2, 3, 4, 5, 6, 7, ... 8
+All block IDs retrieved successfully.
+All block names retrieved successfully.
+Element numbering map retrieved successfully.
+[0] elem_num_map[i] = 1, ... 2
+Reading a block of 1 QUAD4(s) having 4 nodes per element.
+Info retrieved successfully for block: 0.
+Connectivity retrieved successfully for block: 0.
+Reading a block of 1 QUAD4(s) having 4 nodes per element.
+Info retrieved successfully for block: 1.
+Connectivity retrieved successfully for block: 1.
+All sideset information retrieved successfully.
+All side set names retrieved successfully.
+Parameters retrieved successfully for sideset: 0.
+Data retrieved successfully for sideset: 0.
+Parameters retrieved successfully for sideset: 1.
+Data retrieved successfully for sideset: 1.
+Parameters retrieved successfully for sideset: 2.
+Data retrieved successfully for sideset: 2.
+Parameters retrieved successfully for sideset: 3.
+Data retrieved successfully for sideset: 3.
+Parameters retrieved successfully for sideset: 4.
+Data retrieved successfully for sideset: 4.
+Parameters retrieved successfully for sideset: 5.
+Data retrieved successfully for sideset: 5.
+Parameters retrieved successfully for sideset: 6.
+Data retrieved successfully for sideset: 6.
+Parameters retrieved successfully for sideset: 7.
+Data retrieved successfully for sideset: 7.
+All node set names retrieved successfully.
+Exodus file closed successfully.
+*** WARNING: The following parameters were unused in your input file:
+Executioner/dt
+Executioner/dtmin
+Executioner/end_time
+*** WARNING
+
+Framework Information:
+Version:                 N/A
+PETSc Version:           3.5.0
+Current Time:            Fri Oct 24 13:20:27 2014
+Executable Timestamp:    Mon Sep 15 19:02:50 2014
+
+
+Parallelism:
+  Num Processors:        1
+  Num Threads:           1
+
+Mesh: 
+  Distribution:          serial
+  Mesh Dimension:        2
+  Spatial Dimension:     3
+  Nodes:                 
+    Total:               8
+    Local:               8
+  Elems:                 
+    Total:               2
+    Local:               2
+  Num Subdomains:        2
+  Num Partitions:        1
+
+Nonlinear System:
+  Num DOFs:              16
+  Num Local DOFs:        16
+  Variables:             { "disp_x" "disp_y" } 
+  Finite Element Types:  "LAGRANGE" 
+  Approximation Orders:  "FIRST" 
+
+Auxiliary System:
+  Num DOFs:              8
+  Num Local DOFs:        8
+  Variables:             "penetration" 
+  Finite Element Types:  "LAGRANGE" 
+  Approximation Orders:  "FIRST" 
+
+Execution Information:
+  Executioner:           Steady
+  Solver Mode:           NEWTON
+
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------------+----------------+
+| time           | 1_top_disp_y   | 2_bot_disp_y   | 3_lower_block_disp_y | time_step      |
++----------------+----------------+----------------+----------------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |         0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------------+----------------+
+
+ 0 Nonlinear |R| = 1.414214e-03
+      Testing hand-coded Jacobian, if the ratio is O(1.e-8), the hand-coded Jacobian is probably correct.
+      Run with -snes_check_jacobian_view [viewer][:filename][:format] to show difference of hand-coded and finite difference Jacobian.
+    3.67337e-09 = ||J - Jfd||//J|| 0.0148401  = ||J - Jfd||
+      0 Linear |R| = 1.414214e-03
+      1 Linear |R| = 1.414214e-03
+      2 Linear |R| = 3.595645e-14
+ 1 Nonlinear |R| = 4.673629e-13
+SNES Object: 1 MPI processes
+  type: newtonls
+  maximum iterations=20, maximum function evaluations=10000
+  tolerances: relative=1e-12, absolute=1e-09, solution=1e-50
+  total number of linear solver iterations=2
+  total number of function evaluations=19
+  SNESLineSearch Object:   1 MPI processes
+    type: bt
+      interpolation: cubic
+      alpha=1.000000e-04
+    maxstep=1.000000e+08, minlambda=1.000000e-12
+    tolerances: relative=1.000000e-08, absolute=1.000000e-15, lambda=1.000000e-08
+    maximum iterations=40
+    using user-defined postcheck step
+  KSP Object:   1 MPI processes
+    type: gmres
+      GMRES: restart=30, using Classical (unmodified) Gram-Schmidt Orthogonalization with no iterative refinement
+      GMRES: happy breakdown tolerance 1e-30
+    maximum iterations=50, initial guess is zero
+    tolerances:  relative=1e-05, absolute=1e-50, divergence=10000
+    right preconditioning
+    using UNPRECONDITIONED norm type for convergence test
+  PC Object:   1 MPI processes
+    type: lu
+      LU: out-of-place factorization
+      tolerance for zero pivot 2.22045e-14
+      matrix ordering: nd
+      factor fill ratio given 5, needed 1
+        Factored matrix follows:
+          Mat Object:           1 MPI processes
+            type: seqaij
+            rows=16, cols=16
+            package used to perform factorization: petsc
+            total: nonzeros=256, allocated nonzeros=256
+            total number of mallocs used during MatSetValues calls =0
+              using I-node routines: found 4 nodes, limit used is 5
+    linear system matrix = precond matrix:
+    Mat Object:    ()     1 MPI processes
+      type: seqaij
+      rows=16, cols=16
+      total: nonzeros=256, allocated nonzeros=256
+      total number of mallocs used during MatSetValues calls =0
+        using I-node routines: found 4 nodes, limit used is 5
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------------+----------------+
+| time           | 1_top_disp_y   | 2_bot_disp_y   | 3_lower_block_disp_y | time_step      |
++----------------+----------------+----------------+----------------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |         0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |  -2.223152e-18 |   0.000000e+00 |        -1.981258e-18 |   0.000000e+00 |
++----------------+----------------+----------------+----------------------+----------------+
+
+
+
+ ------------------------------------------------------------------------------------------------------------------
+| Time:           Fri Oct 24 13:20:28 2014                                                                         |
+| OS:             Darwin                                                                                           |
+| HostName:       sal3.local                                                                                       |
+| OS Release:     13.1.0                                                                                           |
+| OS Version:     Darwin Kernel Version 13.1.0: Wed Apr  2 23:52:02 PDT 2014; root:xnu-2422.92.1~2/RELEASE_X86_64  |
+| Machine:        x86_64                                                                                           |
+| Username:       karpeev                                                                                          |
+| Configuration:  /Users/karpeev/libmesh/rev/configure  '--prefix=/Users/karpeev/libmesh/rev/build/petsc/v3.5/arch-herd-dbg'|
+|  '--enable-silent-rules'                                                                                         |
+|  '--enable-unique-id'                                                                                            |
+|  '--disable-warnings'                                                                                            |
+|  '--disable-cxx11'                                                                                               |
+|  '--enable-openmp'                                                                                               |
+|  'CXX=/Users/karpeev/petsc/v3.5/arch-herd-dbg/bin/mpicxx'                                                        |
+|  'CC=/Users/karpeev/petsc/v3.5/arch-herd-dbg/bin/mpicc'                                                          |
+|  'FC=/Users/karpeev/petsc/v3.5/arch-herd-dbg/bin/mpif90'                                                         |
+|  'F77=/Users/karpeev/petsc/v3.5/arch-herd-dbg/bin/mpif77'                                                        |
+|  'METHODS=dbg'                                                                                                   |
+|  'PETSC_DIR=/Users/karpeev/petsc/v3.5'                                                                           |
+|  'PETSC_ARCH=arch-herd-dbg'                                                                                      |
+ ------------------------------------------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------------------------------
+| XContact Performance: Alive time=0.426795, Active time=0.286076                                                |
+ ----------------------------------------------------------------------------------------------------------------
+| Event                             nCalls     Total Time  Avg Time    Total Time  Avg Time    % of Active Time  |
+|                                              w/o Sub     w/o Sub     With Sub    With Sub    w/o S    With S   |
+|----------------------------------------------------------------------------------------------------------------|
+|                                                                                                                |
+|                                                                                                                |
+| Solve                                                                                                          |
+|   ComputeResidualThread           20         0.0066      0.000330    0.0066      0.000330    2.31     2.31     |
+|   NearestNodeLocator::findNodes() 26         0.0004      0.000017    0.0004      0.000017    0.15     0.15     |
+|   computeDiracContributions()     22         0.0001      0.000003    0.0001      0.000003    0.02     0.02     |
+|   compute_dampers()               1          0.0000      0.000001    0.0000      0.000001    0.00     0.00     |
+|   compute_jacobian()              2          0.0102      0.005116    0.0102      0.005118    3.58     3.58     |
+|   compute_residual()              20         0.1145      0.005726    0.1497      0.007485    40.03    52.33    |
+|   compute_user_objects()          27         0.0003      0.000010    0.0003      0.000010    0.09     0.09     |
+|   detectPenetration()             25         0.0038      0.000151    0.0038      0.000151    1.32     1.32     |
+|   residual.close2()               20         0.0060      0.000298    0.0060      0.000298    2.08     2.08     |
+|   residual.close3()               20         0.0058      0.000290    0.0058      0.000290    2.03     2.03     |
+|   residual.close4()               20         0.0167      0.000837    0.0167      0.000837    5.85     5.85     |
+|   solve()                         1          0.0894      0.089371    0.2831      0.283135    31.24    98.97    |
+|   updateDisplacedMesh()           23         0.0151      0.000654    0.0184      0.000802    5.26     6.45     |
+|   update_aux_vars_elemental()     27         0.0000      0.000001    0.0000      0.000001    0.01     0.01     |
+|   update_aux_vars_nodal()         27         0.0000      0.000001    0.0000      0.000001    0.01     0.01     |
+|   update_aux_vars_nodal_bcs()     27         0.0172      0.000638    0.0172      0.000638    6.02     6.02     |
+ ----------------------------------------------------------------------------------------------------------------
+| Totals:                           308        0.2861                                          100.00            |
+ ----------------------------------------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------------------------------------------------
+| Setup Performance: Alive time=0.427439, Active time=0.05894                                                             |
+ -------------------------------------------------------------------------------------------------------------------------
+| Event                                      nCalls     Total Time  Avg Time    Total Time  Avg Time    % of Active Time  |
+|                                                       w/o Sub     w/o Sub     With Sub    With Sub    w/o S    With S   |
+|-------------------------------------------------------------------------------------------------------------------------|
+|                                                                                                                         |
+|                                                                                                                         |
+| Setup                                                                                                                   |
+|   Create DisplacedProblem                  1          0.0004      0.000359    0.0004      0.000359    0.61     0.61     |
+|   Create Executioner                       1          0.0004      0.000409    0.0004      0.000409    0.69     0.69     |
+|   DisplacedProblem::init::eq.init()        1          0.0131      0.013077    0.0131      0.013077    22.19    22.19    |
+|   DisplacedProblem::init::meshChanged()    1          0.0002      0.000179    0.0002      0.000179    0.30     0.30     |
+|   FEProblem::init::meshChanged()           1          0.0004      0.000408    0.0004      0.000408    0.69     0.69     |
+|   Initial computeUserObjects()             1          0.0000      0.000017    0.0000      0.000017    0.03     0.03     |
+|   Initial execMultiApps()                  1          0.0000      0.000010    0.0000      0.000010    0.02     0.02     |
+|   Initial execTransfers()                  1          0.0000      0.000009    0.0000      0.000009    0.02     0.02     |
+|   Initial updateActiveSemiLocalNodeRange() 1          0.0000      0.000018    0.0000      0.000018    0.03     0.03     |
+|   Initial updateGeomSearch()               2          0.0001      0.000072    0.0001      0.000072    0.24     0.24     |
+|   NonlinearSystem::update()                1          0.0003      0.000319    0.0003      0.000319    0.54     0.54     |
+|   Output Initial Condition                 1          0.0191      0.019077    0.0191      0.019077    32.37    32.37    |
+|   Prepare Mesh                             2          0.0005      0.000275    0.0005      0.000275    0.93     0.93     |
+|   Read Mesh                                2          0.0027      0.001352    0.0027      0.001352    4.59     4.59     |
+|   copySolutionsBackwards()                 1          0.0015      0.001533    0.0015      0.001533    2.60     2.60     |
+|   eq.init()                                1          0.0197      0.019698    0.0197      0.019698    33.42    33.42    |
+|   getMinQuadratureOrder()                  1          0.0000      0.000015    0.0000      0.000015    0.03     0.03     |
+|   initial adaptivity                       1          0.0000      0.000002    0.0000      0.000002    0.00     0.00     |
+|   maxQps()                                 1          0.0004      0.000404    0.0004      0.000404    0.69     0.69     |
+|   reinit() after updateGeomSearch()        1          0.0000      0.000008    0.0000      0.000008    0.01     0.01     |
+|                                                                                                                         |
+| ghostGhostedBoundaries                                                                                                  |
+|   eq.init()                                1          0.0000      0.000002    0.0000      0.000002    0.00     0.00     |
+ -------------------------------------------------------------------------------------------------------------------------
+| Totals:                                    24         0.0589                                          100.00            |
+ -------------------------------------------------------------------------------------------------------------------------
+
+ ---------------------------------------------------------------------------- 
+| Reference count information                                                |
+ ---------------------------------------------------------------------------- 
+| N7libMesh10FEAbstractE reference count information:
+|  Creations:    200
+|  Destructions: 200
+| N7libMesh10Parameters5ValueE reference count information:
+|  Creations:    11658
+|  Destructions: 11658
+| N7libMesh12SparseMatrixIdEE reference count information:
+|  Creations:    5
+|  Destructions: 5
+| N7libMesh13NumericVectorIdEE reference count information:
+|  Creations:    88
+|  Destructions: 88
+| N7libMesh15EquationSystemsE reference count information:
+|  Creations:    2
+|  Destructions: 2
+| N7libMesh15NonlinearSolverIdEE reference count information:
+|  Creations:    1
+|  Destructions: 1
+| N7libMesh4ElemE reference count information:
+|  Creations:    205
+|  Destructions: 205
+| N7libMesh4NodeE reference count information:
+|  Creations:    16
+|  Destructions: 16
+| N7libMesh5QBaseE reference count information:
+|  Creations:    294
+|  Destructions: 294
+| N7libMesh6DofMapE reference count information:
+|  Creations:    4
+|  Destructions: 4
+| N7libMesh6SystemE reference count information:
+|  Creations:    4
+|  Destructions: 4
+| N7libMesh9DofObjectE reference count information:
+|  Creations:    221
+|  Destructions: 221
+ ---------------------------------------------------------------------------- 
+WARNING! There are options you set that were not used!
+WARNING! could be spelling mistake, etc!
+Option left: name:-i value: sbgcc.i
+Option left: name:-malloc (no value)
+Option left: name:-malloc_debug (no value)
