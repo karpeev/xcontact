@@ -1,0 +1,319 @@
+[33m*** Warning, This code is deprecated, and likely to be removed in future library versions!
+Please use a space to separate options in a MooseEnum, commas are deprecated
+MooseEnum initialized with names: "CONSTANT, FIRST, SECOND, THIRD, FOURTH"
+/Users/karpeev/moose/rev/framework/src/utils/MooseEnumBase.C, line 33, compiled Sep 15 2014 at 18:29:25 ***[39m
+Framework Information:
+Version:                 N/A
+PETSc Version:           3.5.0
+Current Time:            Fri Oct 24 18:31:32 2014
+Executable Timestamp:    Thu Sep 25 16:15:25 2014
+
+
+Parallelism:
+  Num Processors:        8
+  Num Threads:           1
+
+Mesh: 
+  Distribution:          serial
+  Mesh Dimension:        3
+  Spatial Dimension:     3
+  Nodes:                 
+    Total:               13410
+    Local:               1833
+  Elems:                 
+    Total:               68096
+    Local:               8512
+  Num Subdomains:        2
+  Num Partitions:        8
+  Partitioner:           metis
+
+Nonlinear System:
+  Num DOFs:              40230
+  Num Local DOFs:        5499
+  Variables:             { "disp_x" "disp_y" "disp_z" } 
+  Finite Element Types:  "LAGRANGE" 
+  Approximation Orders:  "FIRST" 
+
+Auxiliary System:
+  Num DOFs:              13410
+  Num Local DOFs:        1833
+  Variables:             "penetration" 
+  Finite Element Types:  "LAGRANGE" 
+  Approximation Orders:  "FIRST" 
+
+Execution Information:
+  Executioner:           Transient
+  TimeStepper:           ConstantDT
+  Solver Mode:           NEWTON
+
+
+Time Step  0, time = 0
+                dt = 0
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | _dt            | nonlinear_its  | num_linear_its |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step  1, time = 1
+                dt = 1
+ 0 Nonlinear |R| = 1.500000e-03
+  0 SNES Function norm 1.500000000000e-03 
+    0 KSP Residual norm 1.500000000000e-03 
+    1 KSP Residual norm 1.499999999981e-03 
+    2 KSP Residual norm 1.499999999856e-03 
+    3 KSP Residual norm 1.499999999079e-03 
+    4 KSP Residual norm 1.499999998336e-03 
+    5 KSP Residual norm 1.499999991859e-03 
+    6 KSP Residual norm 1.499999908355e-03 
+    7 KSP Residual norm 1.499999462454e-03 
+    8 KSP Residual norm 1.499998702071e-03 
+    9 KSP Residual norm 1.499997054520e-03 
+   10 KSP Residual norm 1.499987215635e-03 
+   11 KSP Residual norm 1.499935851526e-03 
+   12 KSP Residual norm 1.499688937575e-03 
+   13 KSP Residual norm 1.498633251054e-03 
+   14 KSP Residual norm 1.486789702361e-03 
+   15 KSP Residual norm 1.464351393628e-03 
+   16 KSP Residual norm 1.020495086065e-03 
+   17 KSP Residual norm 2.762100340173e-04 
+   18 KSP Residual norm 5.411507495036e-05 
+   19 KSP Residual norm 8.809075995267e-06 
+   20 KSP Residual norm 1.954030437087e-06 
+   21 KSP Residual norm 2.756253231526e-07 
+   22 KSP Residual norm 2.906651118279e-08 
+   23 KSP Residual norm 2.362111167351e-09 
+   24 KSP Residual norm 3.960506119345e-10 
+   25 KSP Residual norm 4.221396702000e-11 
+   26 KSP Residual norm 1.048066307901e-11 
+ 1 Nonlinear |R| = 1.618690e-04
+  1 SNES Function norm 1.618690053916e-04 
+    0 KSP Residual norm 1.618690053916e-04 
+    1 KSP Residual norm 1.554244149306e-04 
+    2 KSP Residual norm 1.009504041398e-04 
+    3 KSP Residual norm 2.523996029491e-05 
+    4 KSP Residual norm 8.619736519308e-06 
+    5 KSP Residual norm 5.212341747778e-06 
+    6 KSP Residual norm 1.993092405586e-06 
+    7 KSP Residual norm 6.903310737593e-07 
+    8 KSP Residual norm 4.010658674365e-07 
+    9 KSP Residual norm 3.365266461559e-07 
+   10 KSP Residual norm 2.380946172604e-07 
+   11 KSP Residual norm 8.223358055961e-08 
+   12 KSP Residual norm 4.129635800995e-08 
+   13 KSP Residual norm 5.478623709340e-09 
+   14 KSP Residual norm 2.926440549559e-09 
+   15 KSP Residual norm 8.566797061090e-10 
+   16 KSP Residual norm 5.253622274560e-10 
+   17 KSP Residual norm 1.446268431848e-10 
+   18 KSP Residual norm 2.429040173481e-11 
+   19 KSP Residual norm 7.820735062090e-12 
+   20 KSP Residual norm 1.352158907260e-12 
+ 2 Nonlinear |R| = 2.052988e+01
+  2 SNES Function norm 2.052987922238e+01 
+    0 KSP Residual norm 2.052987922238e+01 
+    1 KSP Residual norm 2.212142074893e+00 
+    2 KSP Residual norm 2.504414370354e-01 
+    3 KSP Residual norm 6.889229921373e-02 
+    4 KSP Residual norm 3.282481053797e-02 
+    5 KSP Residual norm 2.233988490241e-02 
+    6 KSP Residual norm 1.002133384984e-02 
+    7 KSP Residual norm 3.426009810920e-03 
+    8 KSP Residual norm 9.647053086823e-04 
+    9 KSP Residual norm 3.096264992167e-04 
+   10 KSP Residual norm 1.593967661981e-04 
+   11 KSP Residual norm 1.081483666687e-04 
+   12 KSP Residual norm 4.426689701012e-05 
+   13 KSP Residual norm 2.934522903510e-05 
+   14 KSP Residual norm 1.577152896966e-05 
+   15 KSP Residual norm 8.606477806542e-06 
+   16 KSP Residual norm 3.099100816697e-06 
+   17 KSP Residual norm 6.666438725752e-07 
+   18 KSP Residual norm 1.645789989959e-07 
+ 3 Nonlinear |R| = 6.187906e-05
+  3 SNES Function norm 6.187906112821e-05 
+    0 KSP Residual norm 6.187906112821e-05 
+    1 KSP Residual norm 1.164325590984e-05 
+    2 KSP Residual norm 1.464775718377e-06 
+    3 KSP Residual norm 4.440542582709e-07 
+    4 KSP Residual norm 1.737990650686e-07 
+    5 KSP Residual norm 9.798790427541e-08 
+    6 KSP Residual norm 5.342801768540e-08 
+    7 KSP Residual norm 1.748774028921e-08 
+    8 KSP Residual norm 5.914539072004e-09 
+    9 KSP Residual norm 2.464732582012e-09 
+   10 KSP Residual norm 1.421985762650e-09 
+   11 KSP Residual norm 1.080583966091e-09 
+   12 KSP Residual norm 5.186803409081e-10 
+   13 KSP Residual norm 1.846168564978e-10 
+   14 KSP Residual norm 4.709603330686e-11 
+   15 KSP Residual norm 8.999044357454e-12 
+   16 KSP Residual norm 2.747201860098e-12 
+   17 KSP Residual norm 7.833394781499e-13 
+   18 KSP Residual norm 2.608209195521e-13 
+ 4 Nonlinear |R| = 6.368380e-09
+  4 SNES Function norm 6.368380121119e-09 
+SNES Object: 8 MPI processes
+  type: newtonls
+  maximum iterations=20, maximum function evaluations=10000
+  tolerances: relative=1e-08, absolute=1e-08, solution=1e-50
+  total number of linear solver iterations=82
+  total number of function evaluations=5
+  SNESLineSearch Object:   8 MPI processes
+    type: basic
+    maxstep=1.000000e+08, minlambda=1.000000e-12
+    tolerances: relative=1.000000e-08, absolute=1.000000e-15, lambda=1.000000e-08
+    maximum iterations=40
+    using user-defined postcheck step
+  KSP Object:   8 MPI processes
+    type: gmres
+      GMRES: restart=30, using Classical (unmodified) Gram-Schmidt Orthogonalization with no iterative refinement
+      GMRES: happy breakdown tolerance 1e-30
+    maximum iterations=100, initial guess is zero
+    tolerances:  relative=1e-08, absolute=1e-50, divergence=10000
+    right preconditioning
+    using UNPRECONDITIONED norm type for convergence test
+  PC Object:   8 MPI processes
+    type: asm
+      Additive Schwarz: total subdomain blocks = 8, amount of overlap = 5
+      Additive Schwarz: restriction/interpolation type - RESTRICT
+      Local solve is same for all blocks, in the following KSP and PC objects:
+    KSP Object:    (sub_)     1 MPI processes
+      type: preonly
+      maximum iterations=10000, initial guess is zero
+      tolerances:  relative=1e-05, absolute=1e-50, divergence=10000
+      left preconditioning
+      using NONE norm type for convergence test
+    PC Object:    (sub_)     1 MPI processes
+      type: lu
+        LU: out-of-place factorization
+        tolerance for zero pivot 2.22045e-14
+        matrix ordering: nd
+        factor fill ratio given 5, needed 14.8341
+          Factored matrix follows:
+            Mat Object:             1 MPI processes
+              type: seqaij
+              rows=16953, cols=16953
+              package used to perform factorization: petsc
+              total: nonzeros=2.01419e+07, allocated nonzeros=2.01419e+07
+              total number of mallocs used during MatSetValues calls =0
+                using I-node routines: found 5749 nodes, limit used is 5
+      linear system matrix = precond matrix:
+      Mat Object:      ()       1 MPI processes
+        type: seqaij
+        rows=16953, cols=16953
+        total: nonzeros=1.35782e+06, allocated nonzeros=1.35782e+06
+        total number of mallocs used during MatSetValues calls =0
+          using I-node routines: found 5774 nodes, limit used is 5
+    linear system matrix = precond matrix:
+    Mat Object:    ()     8 MPI processes
+      type: mpiaij
+      rows=40230, cols=40230
+      total: nonzeros=2.33983e+06, allocated nonzeros=2.45362e+06
+      total number of mallocs used during MatSetValues calls =17311
+        using I-node (on process 0) routines: found 1833 nodes, limit used is 5
+ Solve Converged!
+
+Outlier Variable Residual Norms:
+  disp_x: 6.099473e-09
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | _dt            | nonlinear_its  | num_linear_its |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
+|   1.000000e+00 |   1.000000e+00 |   4.000000e+00 |   8.200000e+01 |
++----------------+----------------+----------------+----------------+
+
+
+
+ ------------------------------------------------------------------------------------------------------------------
+| Processor id:   0                                                                                                |
+| Num Processors: 8                                                                                                |
+| Time:           Fri Oct 24 18:32:23 2014                                                                         |
+| OS:             Darwin                                                                                           |
+| HostName:       sal3.local                                                                                       |
+| OS Release:     13.1.0                                                                                           |
+| OS Version:     Darwin Kernel Version 13.1.0: Wed Apr  2 23:52:02 PDT 2014; root:xnu-2422.92.1~2/RELEASE_X86_64  |
+| Machine:        x86_64                                                                                           |
+| Username:       karpeev                                                                                          |
+| Configuration:  /Users/karpeev/libmesh/rev/configure  '--prefix=/Users/karpeev/libmesh/rev/build/petsc/v3.5/arch-herd-opt'|
+|  '--enable-silent-rules'                                                                                         |
+|  '--enable-unique-id'                                                                                            |
+|  '--disable-warnings'                                                                                            |
+|  '--disable-cxx11'                                                                                               |
+|  '--enable-openmp'                                                                                               |
+|  'CXX=/Users/karpeev/petsc/v3.5/arch-herd-opt/bin/mpicxx'                                                        |
+|  'CC=/Users/karpeev/petsc/v3.5/arch-herd-opt/bin/mpicc'                                                          |
+|  'FC=/Users/karpeev/petsc/v3.5/arch-herd-opt/bin/mpif90'                                                         |
+|  'F77=/Users/karpeev/petsc/v3.5/arch-herd-opt/bin/mpif77'                                                        |
+|  'METHODS=opt'                                                                                                   |
+|  'PETSC_DIR=/Users/karpeev/petsc/v3.5'                                                                           |
+|  'PETSC_ARCH=arch-herd-opt'                                                                                      |
+ ------------------------------------------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------------------------------
+| XContact Performance: Alive time=56.4233, Active time=50.2043                                                  |
+ ----------------------------------------------------------------------------------------------------------------
+| Event                             nCalls     Total Time  Avg Time    Total Time  Avg Time    % of Active Time  |
+|                                              w/o Sub     w/o Sub     With Sub    With Sub    w/o S    With S   |
+|----------------------------------------------------------------------------------------------------------------|
+|                                                                                                                |
+|                                                                                                                |
+| Solve                                                                                                          |
+|   ComputeResidualThread           6          0.8483      0.141385    0.8483      0.141385    1.69     1.69     |
+|   NearestNodeLocator::findNodes() 15         0.0064      0.000426    0.0064      0.000426    0.01     0.01     |
+|   computeDiracContributions()     10         0.0000      0.000003    0.0000      0.000003    0.00     0.00     |
+|   compute_dampers()               4          0.0000      0.000001    0.0000      0.000001    0.00     0.00     |
+|   compute_jacobian()              4          10.1025     2.525626    10.1025     2.525629    20.12    20.12    |
+|   compute_residual()              6          0.2228      0.037138    1.1146      0.185774    0.44     2.22     |
+|   compute_user_objects()          15         0.0001      0.000007    0.0001      0.000007    0.00     0.00     |
+|   detectPenetration()             14         0.0770      0.005503    0.0770      0.005503    0.15     0.15     |
+|   residual.close2()               6          0.0173      0.002875    0.0173      0.002875    0.03     0.03     |
+|   residual.close3()               6          0.0091      0.001510    0.0091      0.001510    0.02     0.02     |
+|   residual.close4()               6          0.0171      0.002858    0.0171      0.002858    0.03     0.03     |
+|   solve()                         1          38.8116     38.811579   50.1140     50.114034   77.31    99.82    |
+|   updateDisplacedMesh()           11         0.0310      0.002817    0.0473      0.004299    0.06     0.09     |
+|   update_aux_vars_elemental()     18         0.0028      0.000156    0.0028      0.000156    0.01     0.01     |
+|   update_aux_vars_nodal()         18         0.0073      0.000404    0.0073      0.000404    0.01     0.01     |
+|   update_aux_vars_nodal_bcs()     18         0.0510      0.002834    0.0510      0.002834    0.10     0.10     |
+ ----------------------------------------------------------------------------------------------------------------
+| Totals:                           158        50.2043                                         100.00            |
+ ----------------------------------------------------------------------------------------------------------------
+ -------------------------------------------------------------------------------------------------------------------------
+| Setup Performance: Alive time=56.4235, Active time=5.27815                                                              |
+ -------------------------------------------------------------------------------------------------------------------------
+| Event                                      nCalls     Total Time  Avg Time    Total Time  Avg Time    % of Active Time  |
+|                                                       w/o Sub     w/o Sub     With Sub    With Sub    w/o S    With S   |
+|-------------------------------------------------------------------------------------------------------------------------|
+|                                                                                                                         |
+|                                                                                                                         |
+| Setup                                                                                                                   |
+|   Create DisplacedProblem                  1          0.0275      0.027458    0.0275      0.027458    0.52     0.52     |
+|   Create Executioner                       1          0.0007      0.000664    0.0007      0.000664    0.01     0.01     |
+|   DisplacedProblem::init::eq.init()        1          0.3065      0.306528    0.3065      0.306528    5.81     5.81     |
+|   DisplacedProblem::init::meshChanged()    1          0.0506      0.050631    0.0506      0.050631    0.96     0.96     |
+|   FEProblem::init::meshChanged()           1          0.1211      0.121056    0.1211      0.121056    2.29     2.29     |
+|   Initial computeUserObjects()             1          0.0000      0.000027    0.0000      0.000027    0.00     0.00     |
+|   Initial execMultiApps()                  1          0.0000      0.000006    0.0000      0.000006    0.00     0.00     |
+|   Initial execTransfers()                  1          0.0000      0.000012    0.0000      0.000012    0.00     0.00     |
+|   Initial updateActiveSemiLocalNodeRange() 1          0.0050      0.005006    0.0050      0.005006    0.09     0.09     |
+|   Initial updateGeomSearch()               2          0.0012      0.000610    0.0012      0.000610    0.02     0.02     |
+|   NonlinearSystem::update()                1          0.0048      0.004755    0.0048      0.004755    0.09     0.09     |
+|   Output Initial Condition                 1          0.1701      0.170051    0.1701      0.170051    3.22     3.22     |
+|   Prepare Mesh                             2          0.1144      0.057204    0.1144      0.057204    2.17     2.17     |
+|   Read Mesh                                2          1.8405      0.920268    1.8405      0.920268    34.87    34.87    |
+|   copySolutionsBackwards()                 1          0.0043      0.004265    0.0043      0.004265    0.08     0.08     |
+|   eq.init()                                1          0.6614      0.661431    0.6614      0.661431    12.53    12.53    |
+|   getMinQuadratureOrder()                  1          0.0000      0.000012    0.0000      0.000012    0.00     0.00     |
+|   initial adaptivity                       1          0.0000      0.000001    0.0000      0.000001    0.00     0.00     |
+|   maxQps()                                 1          0.0171      0.017149    0.0171      0.017149    0.32     0.32     |
+|   reinit() after updateGeomSearch()        1          1.9529      1.952929    1.9529      1.952929    37.00    37.00    |
+|                                                                                                                         |
+| ghostGhostedBoundaries                                                                                                  |
+|   eq.init()                                1          0.0000      0.000003    0.0000      0.000003    0.00     0.00     |
+ -------------------------------------------------------------------------------------------------------------------------
+| Totals:                                    24         5.2781                                          100.00            |
+ -------------------------------------------------------------------------------------------------------------------------

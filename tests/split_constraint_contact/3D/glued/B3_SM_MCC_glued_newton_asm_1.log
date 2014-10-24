@@ -1,0 +1,199 @@
+Framework Information:
+Version:                 N/A
+PETSc Version:           3.5.0
+Current Time:            Fri Oct 24 18:50:33 2014
+Executable Timestamp:    Thu Sep 25 16:15:25 2014
+
+
+Parallelism:
+  Num Processors:        1
+  Num Threads:           1
+
+Mesh: 
+  Distribution:          serial
+  Mesh Dimension:        3
+  Spatial Dimension:     3
+  Nodes:                 
+    Total:               13410
+    Local:               13410
+  Elems:                 
+    Total:               68096
+    Local:               68096
+  Num Subdomains:        2
+  Num Partitions:        1
+
+Nonlinear System:
+  Num DOFs:              40230
+  Num Local DOFs:        40230
+  Variables:             { "disp_x" "disp_y" "disp_z" } 
+  Finite Element Types:  "LAGRANGE" 
+  Approximation Orders:  "FIRST" 
+
+Auxiliary System:
+  Num DOFs:              13410
+  Num Local DOFs:        13410
+  Variables:             "penetration" 
+  Finite Element Types:  "LAGRANGE" 
+  Approximation Orders:  "FIRST" 
+
+Execution Information:
+  Executioner:           Transient
+  TimeStepper:           ConstantDT
+  Solver Mode:           NEWTON
+
+
+Time Step  0, time = 0
+                dt = 0
+
+Postprocessor Values:
++----------------+----------------+----------------+----------------+
+| time           | _dt            | nonlinear_its  | num_linear_its |
++----------------+----------------+----------------+----------------+
+|   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |   0.000000e+00 |
++----------------+----------------+----------------+----------------+
+
+
+Time Step  1, time = 1
+                dt = 1
+ 0 Nonlinear |R| = 1.500000e-03
+  0 SNES Function norm 1.500000000000e-03 
+    0 KSP Residual norm 1.500000000000e-03 
+    1 KSP Residual norm 6.350425732785e-12 
+ 1 Nonlinear |R| = 2.282358e+01
+  1 SNES Function norm 2.282358041570e+01 
+    0 KSP Residual norm 2.282358041570e+01 
+    1 KSP Residual norm 1.667769260137e-11 
+ 2 Nonlinear |R| = 6.356970e+01
+  2 SNES Function norm 6.356970274221e+01 
+    0 KSP Residual norm 6.356970274221e+01 
+    1 KSP Residual norm 1.069557958077e-11 
+ 3 Nonlinear |R| = 8.613401e+01
+  3 SNES Function norm 8.613401171913e+01 
+    0 KSP Residual norm 8.613401171913e+01 
+    1 KSP Residual norm 4.385070628569e-12 
+ 4 Nonlinear |R| = 9.278615e+01
+  4 SNES Function norm 9.278615049931e+01 
+    0 KSP Residual norm 9.278615049931e+01 
+    1 KSP Residual norm 6.866577777045e-12 
+ 5 Nonlinear |R| = 7.572432e+01
+  5 SNES Function norm 7.572432345286e+01 
+    0 KSP Residual norm 7.572432345286e+01 
+    1 KSP Residual norm 1.218069047581e-11 
+ 6 Nonlinear |R| = 4.630243e+01
+  6 SNES Function norm 4.630243280985e+01 
+    0 KSP Residual norm 4.630243280985e+01 
+    1 KSP Residual norm 1.074634098193e-11 
+ 7 Nonlinear |R| = 3.227969e+01
+  7 SNES Function norm 3.227968710595e+01 
+    0 KSP Residual norm 3.227968710595e+01 
+    1 KSP Residual norm 3.067635716900e-12 
+ 8 Nonlinear |R| = 2.991628e+01
+  8 SNES Function norm 2.991627679118e+01 
+    0 KSP Residual norm 2.991627679118e+01 
+    1 KSP Residual norm 7.171192793172e-12 
+ 9 Nonlinear |R| = 2.709196e+01
+  9 SNES Function norm 2.709195525201e+01 
+    0 KSP Residual norm 2.709195525201e+01 
+    1 KSP Residual norm 1.268530930031e-11 
+10 Nonlinear |R| = 5.301147e+01
+ 10 SNES Function norm 5.301146818987e+01 
+    0 KSP Residual norm 5.301146818987e+01 
+    1 KSP Residual norm 1.151574619430e-11 
+11 Nonlinear |R| = 8.327960e+01
+ 11 SNES Function norm 8.327959576176e+01 
+    0 KSP Residual norm 8.327959576176e+01 
+    1 KSP Residual norm 3.943934875384e-12 
+12 Nonlinear |R| = 9.136555e+01
+ 12 SNES Function norm 9.136555234907e+01 
+    0 KSP Residual norm 9.136555234907e+01 
+    1 KSP Residual norm 7.802630285863e-12 
+13 Nonlinear |R| = 7.171401e+01
+ 13 SNES Function norm 7.171400616263e+01 
+    0 KSP Residual norm 7.171400616263e+01 
+    1 KSP Residual norm 1.372001273908e-11 
+14 Nonlinear |R| = 4.234678e+01
+ 14 SNES Function norm 4.234677664941e+01 
+    0 KSP Residual norm 4.234677664941e+01 
+    1 KSP Residual norm 1.290594007676e-11 
+15 Nonlinear |R| = 3.907079e+01
+ 15 SNES Function norm 3.907079145683e+01 
+    0 KSP Residual norm 3.907079145683e+01 
+    1 KSP Residual norm 3.331242792182e-12 
+16 Nonlinear |R| = 4.250145e+01
+ 16 SNES Function norm 4.250145250770e+01 
+    0 KSP Residual norm 4.250145250770e+01 
+    1 KSP Residual norm 8.208574398453e-12 
+17 Nonlinear |R| = 3.444034e+01
+ 17 SNES Function norm 3.444033840891e+01 
+    0 KSP Residual norm 3.444033840891e+01 
+    1 KSP Residual norm 1.475373551212e-11 
+18 Nonlinear |R| = 5.474159e+01
+ 18 SNES Function norm 5.474159179511e+01 
+    0 KSP Residual norm 5.474159179511e+01 
+    1 KSP Residual norm 1.280851071826e-11 
+19 Nonlinear |R| = 8.730577e+01
+ 19 SNES Function norm 8.730577015377e+01 
+    0 KSP Residual norm 8.730577015377e+01 
+    1 KSP Residual norm 4.176823479927e-12 
+20 Nonlinear |R| = 9.604223e+01
+ 20 SNES Function norm 9.604223012218e+01 
+SNES Object: 1 MPI processes
+  type: newtonls
+  maximum iterations=20, maximum function evaluations=10000
+  tolerances: relative=1e-08, absolute=1e-08, solution=1e-50
+  total number of linear solver iterations=20
+  total number of function evaluations=21
+  SNESLineSearch Object:   1 MPI processes
+    type: basic
+    maxstep=1.000000e+08, minlambda=1.000000e-12
+    tolerances: relative=1.000000e-08, absolute=1.000000e-15, lambda=1.000000e-08
+    maximum iterations=40
+    using user-defined postcheck step
+  KSP Object:   1 MPI processes
+    type: gmres
+      GMRES: restart=30, using Classical (unmodified) Gram-Schmidt Orthogonalization with no iterative refinement
+      GMRES: happy breakdown tolerance 1e-30
+    maximum iterations=100, initial guess is zero
+    tolerances:  relative=1e-08, absolute=1e-50, divergence=10000
+    right preconditioning
+    using UNPRECONDITIONED norm type for convergence test
+  PC Object:   1 MPI processes
+    type: asm
+      Additive Schwarz: total subdomain blocks = 1, amount of overlap = 5
+      Additive Schwarz: restriction/interpolation type - RESTRICT
+      Local solve is same for all blocks, in the following KSP and PC objects:
+      KSP Object:      (sub_)       1 MPI processes
+        type: preonly
+        maximum iterations=10000, initial guess is zero
+        tolerances:  relative=1e-05, absolute=1e-50, divergence=10000
+        left preconditioning
+        using NONE norm type for convergence test
+      PC Object:      (sub_)       1 MPI processes
+        type: lu
+          LU: out-of-place factorization
+          tolerance for zero pivot 2.22045e-14
+          matrix ordering: nd
+          factor fill ratio given 5, needed 20.2591
+            Factored matrix follows:
+              Mat Object:               1 MPI processes
+                type: seqaij
+                rows=40230, cols=40230
+                package used to perform factorization: petsc
+                total: nonzeros=4.31715e+07, allocated nonzeros=4.31715e+07
+                total number of mallocs used during MatSetValues calls =0
+                  using I-node routines: found 13378 nodes, limit used is 5
+        linear system matrix = precond matrix:
+        Mat Object:        ()         1 MPI processes
+          type: seqaij
+          rows=40230, cols=40230
+          total: nonzeros=2.13097e+06, allocated nonzeros=2.13097e+06
+          total number of mallocs used during MatSetValues calls =0
+            using I-node routines: found 13410 nodes, limit used is 5
+    linear system matrix = precond matrix:
+    Mat Object:    ()     1 MPI processes
+      type: seqaij
+      rows=40230, cols=40230
+      total: nonzeros=2.13097e+06, allocated nonzeros=2.13097e+06
+      total number of mallocs used during MatSetValues calls =0
+        using I-node routines: found 13410 nodes, limit used is 5
+ Solve Did NOT Converge!
