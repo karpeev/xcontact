@@ -86,7 +86,7 @@
     type = GluedContactConstraint
     variable = disp_y
     master_variable = disp_y
-    component = 0
+    component = 1
     boundary = 5
     slave = 1
     master = 5
@@ -100,7 +100,7 @@
     type = GluedContactConstraint
     variable = disp_z
     master_variable = disp_z
-    component = 0
+    component = 2
     boundary = 5
     slave = 1
     master = 5
