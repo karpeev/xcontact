@@ -1,0 +1,98 @@
+##
+## Cubit Version 13.1
+## Cubit Build 47305
+## Revised 2011-12-16 15:55:34 -0700 (Fri, 16 Dec 2011)
+## Running 11/25/2014 10:01:50 AM
+## Command Options:
+## -warning = On
+## -information = On
+## -initfile /Users/spenbw/.cubit
+reset
+create vertex 0 0.0177607 0
+create vertex 0 0.0049337 0
+create vertex 0.0024763 0.005175 0
+create curve arc center vertex 1 2 3
+delete vertex 1
+create vertex 0.003802 0.005175 0
+create vertex 0.00431 0.005048 0
+create vertex 0.00431 0 0
+create vertex 0 0 0
+create curve vertex 3 vertex 4
+create curve vertex 4 vertex 5
+create curve vertex 5 vertex 6
+create curve vertex 6 vertex 7
+create curve vertex 7 vertex 2
+create surface curve 1 2 3 4 5 6
+sweep surface 1 yaxis angle 180
+rotate volume 1 about x angle 90
+volume 1 copy reflect z
+volume 1 2 reflect z
+rotate volume all about x angle -90
+merge all
+unite volume all
+webcut volume 1 with cylinder radius 0.003802 axis y
+webcut volume 3 with cylinder radius 0.0024763 axis y
+merge volume all
+compress all
+surface 5 scheme map
+surface 1 9 10 12 13 14 15 interval 2
+curve 18 interval 4
+curve 20 21 interval 1
+curve 14 16 interval 1
+surface 6 scheme map
+curve 17 19 interval 1
+surface 7 scheme pave
+mesh surface 5 6 7
+volume 3 scheme sweep source surface 7 target surface 4
+mesh volume 1 2 3
+volume 1 2 3 copy
+delete volume 1 2 3
+compress all
+volume 1 2 3 move 0 0.007415 0
+nodeset 2000 node 48
+nodeset 2001 node 17
+sideset 20 surface 14 11 5
+sideset 20 face in node in curve 11 remove
+sideset 8 surface 14 11 5 13 3 10 4
+sideset 9 surface 14 11 5 13 3 10 4
+sideset 10 surface 4
+sideset 13 surface 15 8 2
+sideset 14 surface 12 9 6
+nodeset 1020 node 46
+nodeset 1004 node 46
+nodeset 1005 node 46
+sideset 21 surface 13 10 3
+sideset 21 face in node in curve 9 remove
+nodeset 1021 node 47
+sideset 11 surface 13 10 3
+nodeset 3000 node 47
+nodeset 3001 node 34
+nodeset 1004 node 47
+nodeset 1005 node 47
+block 2 volume 1 2 3
+compress all
+create surface rectangle width 0.00061 height 0.01483
+surface 16 move 0.004615 0.007415 0
+sweep surface 16 yaxis angle 180
+volume 4 autosmooth target off
+surface 18 interval 4
+curve 28 33 interval 1
+surface 18 scheme map
+mesh surface 18
+volume 4 scheme sweep source surface 18 target surface 20
+surface 16 21 interval 2
+mesh volume 4
+sideset 1 surface 18
+sideset 7 surface 17
+sideset 9 surface 17
+sideset 5 surface 17
+sideset 2 surface 19
+sideset 13 surface 21
+sideset 14 surface 16
+nodeset 1001 node 57
+nodeset 1004 node 57
+nodeset 1003 node 64
+nodeset 1004 node 64
+block 1 volume 4
+block all element type HEX20
+export genesis "1pellet.e" dimension 3 overwrite
