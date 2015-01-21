@@ -1,0 +1,4 @@
+playback 'B3_tet0.jou'
+#refine volume 1 3 4 5 numsplit 1 bias 1 depth 1 smooth
+refine volume 1 3 4 5 numsplit 1 bias 1 depth 1 smooth
+export mesh 'B3_tet1.e' dim 3 block all overwrite

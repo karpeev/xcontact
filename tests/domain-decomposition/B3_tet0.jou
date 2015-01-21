@@ -1,0 +1,9 @@
+playback 'B3.jou'
+volume 1 3 4 5 size auto factor 9
+preview mesh volume 1 3 4 5
+volume 1 3 4 5 scheme tetmesh
+#set tetmesher interior points on
+#set tetmesher optimize level 3 optimize overconstrained off sliver off
+#set tetmesher boundary recovery off
+mesh volume 1 3 4 5
+export mesh 'B3_tet0.e' dim 3 block all overwrite
