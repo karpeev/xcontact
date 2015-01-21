@@ -319,19 +319,21 @@
     type = ContactSplit
     contact_master   = '5'
     contact_slave    = '10'
-    contact_displaced = 'true'
+    #contact_displaced = 'true'
+    contact_displaced = 'false'
     petsc_options = '-dm_view -dm_moose_print_embedding'
     #petsc_options = '-ksp_monitor'
-    #petsc_options_iname = '-ksp_type -pc_type -sub_pc_type'
-    #petsc_options_value = '    gmres      asm           lu'
-    petsc_options_iname  = '-pc_type -pc_factor_mat_solver_package'
-    petsc_options_value  = '      lu                  superlu_dist'
+    petsc_options_iname = '-ksp_type -pc_type -sub_pc_type'
+    petsc_options_value = '    gmres      asm           lu'
+    #petsc_options_iname  = '-pc_type -pc_factor_mat_solver_package'
+    #petsc_options_value  = '      lu                  superlu_dist'
   [../]
   [./interior]
     type = ContactSplit
     uncontact_master   = '5'
     uncontact_slave    = '10'
-    uncontact_displaced = 'true'
+    #uncontact_displaced = 'true'
+    uncontact_displaced = 'false'
     petsc_options = '-dm_view -ksp_monitor'
     petsc_options_iname = '-pc_type -pc_asm_overlap -sub_pc_type'
     petsc_options_value = '     asm               5           lu'
