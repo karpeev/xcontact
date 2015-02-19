@@ -30,6 +30,7 @@ XContactApp::~XContactApp()
 {
 }
 
+extern "C" void XContactApp__registerApps() { XContactApp::registerApps(); }
 void
 XContactApp::registerApps()
 {
