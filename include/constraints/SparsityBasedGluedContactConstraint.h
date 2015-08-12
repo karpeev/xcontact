@@ -34,7 +34,7 @@ class SparsityBasedGluedContactConstraint :
   public NodeFaceConstraint
 {
 public:
-  SparsityBasedGluedContactConstraint(const std::string & name, InputParameters parameters);
+  SparsityBasedGluedContactConstraint(const InputParameters & parameters);
   virtual ~SparsityBasedGluedContactConstraint(){}
 
   virtual void timestepSetup();

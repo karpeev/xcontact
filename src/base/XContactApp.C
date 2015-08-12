@@ -12,10 +12,9 @@ InputParameters validParams<XContactApp>()
   return params;
 }
 
-XContactApp::XContactApp(const std::string & name, InputParameters parameters) :
-    MooseApp(name, parameters)
+XContactApp::XContactApp(InputParameters parameters) :
+    MooseApp(parameters)
 {
-  srand(processor_id());
 
   Moose::registerObjects(_factory);
   ModulesApp::registerObjects(_factory);
