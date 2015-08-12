@@ -42,8 +42,8 @@ InputParameters validParams<SparsityBasedGluedContactConstraint>()
   return params;
 }
 
-SparsityBasedGluedContactConstraint::SparsityBasedGluedContactConstraint(const std::string & name, InputParameters parameters) :
-    NodeFaceConstraint(name, parameters),
+SparsityBasedGluedContactConstraint::SparsityBasedGluedContactConstraint(const InputParameters & parameters) :
+    NodeFaceConstraint(parameters),
   _component(getParam<unsigned int>("component")),
   _updateContactSet(true),
   _time_last_called(-std::numeric_limits<Real>::max()),

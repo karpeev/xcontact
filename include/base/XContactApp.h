@@ -11,7 +11,7 @@ InputParameters validParams<XContactApp>();
 class XContactApp : public MooseApp
 {
 public:
-  XContactApp(const std::string & name, InputParameters parameters);
+  XContactApp(InputParameters parameters);
   virtual ~XContactApp();
 
   static void registerApps();
